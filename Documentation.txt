@@ -1,0 +1,117 @@
+USER PERSONA:
+
+
+USER-1 (Terry Smith):       [Signifying the 18-25 years age group]
+"Scroll through social media if you want through gain unexpected knowledge"
+
+Personal Information:
+Age - 21 years
+Gender - Male
+Ethnicity: European
+Personal Status - Unmarried
+Hometown - Munich, Germany
+Professional Status - Developer at Neudesic.
+Salary - $70,000/year
+Work Location - California, USA
+
+User Environment:
+- Mostly spends time in the office.
+- Weekends at home or travelling to nearby places.
+
+Device Accessibility - Mobiles, Laptops and Desktops.
+Device Usage order - Mobiles>Laptops>Desktops
+
+User Behaviour / Psychographics:
+- Spends most of the time on the internet scrolling through technology related blogs.
+- Likes to read articles related to new and upcoming tech-advancements.
+- Also likes to watch movies and anime.
+- Interested in posts related tagged as technology, media and entertainment, anime.
+
+User Goals:
+- To find out more Information related to topics in referrence to tech and entertainment.
+- To get answers to tech-related questions.
+- To get suggestions and reviews of recent releases in movie industry.
+- Read theories about anime stories.
+
+Scenario:
+"After returning from office, I would like to go through social media and blogs.
+Trying to find out more information to questions I faced during the day. Figure out more information about upcoming technology.
+I would go through anime related information. As a wroking individual, I don't usually have enough time during the day so I usually surf through the net at night"
+
+
+USER-2 (Tripti Singh):           [Signifying the 25 to 35 years age group]
+Age - 27 years
+Gender - Female
+Ethnicity - Indian
+Personal Status - Unmarried
+Hometown - Patna, India
+Professional Status - Software Engineer at Johnson&Johnson
+Salary - Rs. 1500000/year or $19000/year
+Work Location - Pune, India
+
+User Environment:
+- Spends most of the day at office.
+- Weekends resting at home or hanging out with friends
+
+Device Accessibility - Mobiles and Laptops
+Device Usage - Mobile>Laptops
+
+User Behaviour:
+- Likes to travel.
+- Spends most of the time scrolling through topics related to new places to travel
+- Has a keen interest in music and movies
+- Spends time less time on social media like Facebook and more time on forum-like social media like reddit.
+- Has a little interest in sports
+
+User Goal:
+- To get information about different ways to have fun.
+- Go through funny posts and memes.
+- Get information regarding release date of movies and music albums
+- Get information about sports
+
+Scenario:
+"Usually when planning for trips, to get good suggestions social media is a really good platform. I scroll through different social media platforms to get this information.
+As I am in office for most of the day, after returning home I go through it. Even when a new movie comes up, I check media for reviews and good suggestions.
+Free time is hard to find as an office-lady, so whenever I could, I try to release some stress by surfing throught the net"
+
+
+
+USER STORIES:
+
+Admin: I would like to have all access to the database and server privileges
+Super User: I would like the capability to add, remove and modify datasets in the server
+DB admin: I would like to have database privileges
+Server admin: I would like to have server privileges.
+Website admin: I would like to have website privileges.
+Moderator: I would like to have privileges to add and remove posts and privileges to moderate over users.
+User: I would like access to post threads and comment on other's threads.
+Guest: I would like access to read threads on the platform.
+
+
+Database Schema:
+
+*Tables:
+User:
+ID Integer (Primary Key);
+Username varchar;
+User_pwd varchar;
+
+Privileges:
+ID Integer (Primary Key)(Foreign Key - referrences User);
+Privilege varchar;
+
+Threads:
+ID Integer(Primary Key);
+User_ID Integer(Foreign Key - referrences User);
+Sub_ID Integer(Foreign Key - referrences Subreddits)
+Post_links varchar;
+post_information varchar;
+time Date;
+
+Subreddits:
+ID Integer(Primary Key);
+User_ID Integer (Foreign_Key - referrences User);
+time Date;
+
+
+
