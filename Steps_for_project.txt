@@ -1,0 +1,61 @@
+Main Interface:(Viewable to every user)
+
+HOMEPAGE:
+1. Navigation Bar:
+    - Logo [link to Homepage]
+    - Search Bar
+    - Log-in/ Sign-up buttons
+    - Drop-down list(Showed with anonymous user icon)
+2. Trending:
+    - 4-item view showing Thumbnails of trending posts using pictures
+3. Threads view:
+   * A grid view with the items on right column fixed on window.
+    - Right column showing four elements - trending subreddits, try premium, navigation tool, help and support
+    - Sorting bar.
+    - Show a list of threads based on sorting. (Thumbnails for the threads)
+
+SUBREDDITS:
+1. Navigation Bar:
+    - Logo [link to Homepage]
+    - Search Bar
+    - Log-in/ Sign-up buttons
+    - Drop-down list(Showed with anonymous user icon)
+2. Subreddits Navbar:
+    - Subreddit Link
+    - Join Subreddit buttons
+
+3. Threads view:
+   * A grid view with the items on right column fixed on window.
+    - Right column showing five elements - about subreddits,filter by flair, related subreddits,rules, mod list, help and support
+    - Sorting bar.
+    - Show a list of threads based on sorting. (Thumbnails for the threads)
+
+THREADS:
+1. Navigation Bar:
+    - Logo [link to Homepage]
+    - Search Bar
+    - Log-in/ Sign-up buttons
+    - Drop-down list(Showed with anonymous user icon)
+2. Thread Navbar:
+    - Upvote/Downvote
+    - Thread title
+    - Leave thread link
+3. Thread content:
+    Divided in two columns.
+        - Second column with 2 elements: Link and related info of subreddit, Help and Support
+        - First Column:
+            - first row bar - link to subreddit and information of author of the post.
+            - Second row bar - Title and content of the thread
+            - Third bar -  comment-share etc options
+            - Fourth -  log-in options
+            - Fifth  - Comments on the post (Sub-threads will be in this.)
+
+
+
+
+Logged-in User interface: (Viewable to registeres users)
+
+
+Moderator Interface:(Viewable to moderators)
+
+

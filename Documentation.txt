@@ -78,11 +78,6 @@ Free time is hard to find as an office-lady, so whenever I could, I try to relea
 
 USER STORIES:
 
-Admin: I would like to have all access to the database and server privileges
-Super User: I would like the capability to add, remove and modify datasets in the server
-DB admin: I would like to have database privileges
-Server admin: I would like to have server privileges.
-Website admin: I would like to have website privileges.
 Moderator: I would like to have privileges to add and remove posts and privileges to moderate over users.
 User: I would like access to post threads and comment on other's threads.
 Guest: I would like access to read threads on the platform.
@@ -96,16 +91,21 @@ ID Integer (Primary Key);
 Username varchar;
 User_pwd varchar;
 
-Privileges:
-ID Integer (Primary Key)(Foreign Key - referrences User);
-Privilege varchar;
+
+Moderator:
+ID Integer (Primary Key);
+subreddit_id integer(Foreign_Key - referrences Subreddits);
+User_id integer(Foreign_Key - referrences User)
+
 
 Threads:
 ID Integer(Primary Key);
 User_ID Integer(Foreign Key - referrences User);
 Sub_ID Integer(Foreign Key - referrences Subreddits)
-Post_links varchar;
-post_information varchar;
+Post_links varchar;  -- Used for links.
+post_information varchar; -- Used for text posts.
+post_links_videos varchar;  -- Links to the video saved on server.
+post_links_photos varchar;  -- Links to the photos saved on server.
 time Date;
 
 Subreddits:
