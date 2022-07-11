@@ -79,17 +79,49 @@ Free time is hard to find as an office-lady, so whenever I could, I try to relea
 USER STORIES:
 
 Moderator: I would like to have privileges to add and remove posts and privileges to moderate over users.
+    - Comment/Content viewing
+    - Post creation
+    - Post deletion
+    - Comment creation
+    - Comment deletion
+    - Message other users
+    - Post approval
+    - Post Deletion
+    - User Ban
+    - User Unban
+    - Subreddit approval
+    - Subreddit deletion
+    - Inspect reported users,threads and subreddits
+
 User: I would like access to post threads and comment on other's threads.
+
+    - Comment/Content viewing
+    - Post creation
+    - Post deletion
+    - Comment creation
+    - Comment deletion
+    - Upvote and downvote threads and comments.
+    - Report threads
+    - Report users
+    - Report Subreddits
+    - Message other users.
+
 Guest: I would like access to read threads on the platform.
+
+    - Comment/Content viewing
 
 
 Database Schema:
+
 
 *Tables:
 User:
 ID Integer (Primary Key);
 Username varchar;
 User_pwd varchar;
+User_email varchar;
+Location varchar;
+Age Integer;
 
 
 Moderator:
@@ -112,6 +144,34 @@ Subreddits:
 ID Integer(Primary Key);
 User_ID Integer (Foreign_Key - referrences User);
 time Date;
+
+--- Might be needed (Will updated after full research) ---
+
+Reports:
+
+ID integer (Primary_key)
+User_id integer (Foreign_Key - referrences User)
+Thread_id integer (Foreign_Key - referrences Threads)
+subreddit_id (Foreign_Key - referrences Subreddits)
+
+
+Banned:
+
+ID Integer (Primary_Key)
+User_id Integer (Foreign_Key - referrences User)
+Ban_reason varchar;
+
+
+Messages:
+
+ID integer (Primary_Key);
+User_id Integer (Foreign_Key - referrences user)
+Receiver_id Integer(Foreign_Key - referrences user)
+Message_details varchar;
+
+
+
+
 
 
 
