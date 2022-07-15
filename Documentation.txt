@@ -130,15 +130,7 @@ subreddit_id integer(Foreign_Key - referrences Subreddits);
 User_id integer(Foreign_Key - referrences User)
 
 
-Threads:
-ID Integer(Primary Key);
-User_ID Integer(Foreign Key - referrences User);
-Sub_ID Integer(Foreign Key - referrences Subreddits)
-Post_links varchar;  -- Used for links.
-post_information varchar; -- Used for text posts.
-post_links_videos varchar;  -- Links to the video saved on server.
-post_links_photos varchar;  -- Links to the photos saved on server.
-time Date;
+
 
 Subreddits:
 ID Integer(Primary Key);
