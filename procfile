@@ -1,1 +1,2 @@
 web: gunicorn CCMS.wsgi --reddit -
+heroku ps:scale web=1
