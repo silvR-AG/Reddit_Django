@@ -1,0 +1,10 @@
+{% extends 'reddit/base.html'%}
+{% block content %}
+<br><br><br><br>
+   <div class = 'container' style="display:flex ; justify-content:center;">
+    <form method="POST" class="form-control d-flex align-middle">
+        {{ form.as_p }}
+        {% csrf_token %}
+        <button type="submit">Submit</button>
+    </form></div>
+{% endblock %}

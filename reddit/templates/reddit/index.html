@@ -1,0 +1,47 @@
+{% extends 'reddit/base.html' %}
+{% block content %}
+    <div class="content container-fluid bg-white">
+        <br>
+        <br><br>
+        <div class="col-sm-11" style="height:20vh;margin:0;text-align:center;">
+            {% if user.is_authenticated %}
+            <a href = '/addpost'>
+                <form action="" class="container">
+                    <div class="form-group container">
+                <input type="text" class= 'form-control' id="createpost" name="c_post" placeholder="Create Post" required>
+            </div>
+            </form>
+            </a>
+            {% else %}
+            <a href = '/login'>   
+                <form action="" class="container">
+                <div class="form-group container">
+            <input type="text" class= 'form-control' id="createpost" name="c_post" placeholder="Create Post" required>
+        </div>
+        </form></a>
+            {% endif %}
+            <br><br><br><br>
+        <div class = 'cont' style="display:flex ; gap: 2vh; align-items: start">
+            <table class = "posts_table table" style="background-color:white; width: 100%; text-align: left;">
+                <tbody class="table-hover" >
+            {% for post in data %}
+            <tr><span class="border"><td>
+                {{forloop.counter}}
+                </td></span><td><br></td>
+                <td style="height: 15vh ;">
+                    <a href="{% url 'PostDetail' post.id %}" style="text-decoration: none ; color: black;"> <div class="post"><strong>{{ post.title }}</strong><br><br> <br> submitted {{post.date_created}} by : {{post.author}} to {{post.subreddit}}</div></a>
+                </td></tr>
+                </tbody>
+            {% endfor %}
+            </table>
+            <br><br><br><br><br>
+            <div class = 'subredlist col-sm-2'  style="text-align: left ; background-color: white;">
+            <a href = '/addsub'>Add Subreddit</a> 
+            </div>
+            </div>       
+           
+        </div>
+    </div>
+
+
+{% endblock %}

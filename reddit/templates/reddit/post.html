@@ -1,0 +1,28 @@
+{% extends 'reddit/base.html' %}
+{% load static %}
+
+{% block content %}
+<hr>
+    <div class="container" style="background-color: black ; padding: 0, 10px;"><div class="container" style="background-color: white;">
+    <h1>{{post.title}}</h1>
+    <small>By -- {{post.author}} {{post.subreddit}} {{post.date_created}}</small>
+    <br>
+    <hr>
+    {{post.body}}
+    <br><br><br><br>
+    <h2>Comments:</h2>
+    {% if not post.comments.all %}
+        No Comments Yet
+    {% else %}
+        {% for comment in post.comments.all %}
+            {{comment.user}} - {{comment.date_created}}
+        <br>
+        <div>
+            {{comment.body}}
+        </div>
+        {% endfor %}
+    {% endif %}
+
+    {% include 'reddit/addcomment.html' %}
+    </div></div>
+{% endblock %}

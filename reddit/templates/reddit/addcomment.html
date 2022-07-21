@@ -1,0 +1,11 @@
+
+{% load static %}
+{% block content %}
+    <div class="form" style="display:flex; justify-content: center;">
+    <form method="POST">
+        {{ form.as_p }}
+        {% csrf_token %}
+        <button type="submit">Submit</button>
+    </form></div>
+    </div>
+{% endblock %}

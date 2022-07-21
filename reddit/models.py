@@ -40,14 +40,14 @@ class Posts(models.Model):
 
 
 class Comment(models.Model):
-    post = models.ForeignKey(Posts, on_delete=models.CASCADE)
+    post = models.ForeignKey(Posts,related_name='comments', on_delete=models.CASCADE)
     body = models.TextField(max_length=4000)
     user = models.ForeignKey(R_User, on_delete=models.CASCADE)
     # upvotes = models.IntegerField(default=0)
     # downvotes = models.IntegerField(default=0)
     # score = models.IntegerField(default=0)
     date_created = models.DateField(default=timezone.now)
-    parent = models.ForeignKey('self', on_delete=models.CASCADE)
+    parent = models.ForeignKey('self', on_delete=models.CASCADE, null=True, blank=True)
 
 
     def __str__(self):

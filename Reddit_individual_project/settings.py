@@ -33,7 +33,7 @@ ALLOWED_HOSTS = ['redditdjango.herokuapp.com', '127.0.0.1']
 # Application definition
 
 INSTALLED_APPS = [
-    'reddit.apps.RedditConfig',
+    'reddit',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -58,7 +58,7 @@ ROOT_URLCONF = 'Reddit_individual_project.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': ['reddit/templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -70,6 +70,8 @@ TEMPLATES = [
         },
     },
 ]
+
+APPEND_SLASH=False
 
 WSGI_APPLICATION = 'Reddit_individual_project.wsgi.application'
 
@@ -132,8 +134,11 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/4.0/howto/static-files/
 
 PROJECT_DIR = os.path.dirname(os.path.abspath(__file__))
-STATIC_ROOT = os.path.join(PROJECT_DIR, 'static')
-STATIC_URL = 'static/'
+
+STATIC_URL = '/static/'
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'static'),
+]
 
 
 # Default primary key field type
