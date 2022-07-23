@@ -1,36 +1,19 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Reddit</title>
-</head>
-<body>
-    <h3>Register</h3>
-    {% for message in messages %}
-    <div class="alert alert-{{message.tags}} alert-dismissible fade show" role="alert">
-        <strong>Message</strong>{{message}}
-        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-        <span aria-hidden="true">&times;</span>
-        </button>
-    </div>
-    {% endfor %}
-    <form action="/register" method="post">
-        {% csrf_token %}
-        <label for="">Username</label>
-        <input type="text" id="username" name="username" placeholder="Create a username" required>
-        <br>
-        <label for="">E-mail Address</label>
-        <input type="email" id="email" name="email" placeholder="Enter E-Mail" required>
-        <br>
-        <label for="">Password</label>
-        <input type="password" id="pwd" name="pwd" placeholder="Create a password" required>
-        <br>
-        <label for="">Confirm Password</label>
-        <input type="password" id="c_pwd" name="c_pwd" placeholder="Confirm Password" required>
-        <br>
-        <button type="submit">Register</button>
-    </form>
-</body>
-</html>
+{% extends 'reddit/base.html' %}
+{% block content %}
+<form action="/register" method="post">
+    {% csrf_token %}
+    <label for="">Username</label>
+    <input class="form-control" type="text" id="username" name="username" placeholder="Create a username" required>
+    <br>
+    <label for="">E-mail Address</label>
+    <input class="form-control" type="email" id="email" name="email" placeholder="Enter E-Mail" required>
+    <br>
+    <label for="">Password</label>
+    <input class="form-control" type="password" id="pwd" name="pwd" placeholder="Create a password" required>
+    <br>
+    <label for="">Confirm Password</label>
+    <input class="form-control" type="password" id="c_pwd" name="c_pwd" placeholder="Confirm Password" required>
+    <br>
+    <button type="submit">Register</button>
+</form>
+{% endblock %}

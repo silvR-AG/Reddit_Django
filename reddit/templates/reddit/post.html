@@ -2,27 +2,94 @@
 {% load static %}
 
 {% block content %}
-<hr>
-    <div class="container" style="background-color: black ; padding: 0, 10px;"><div class="container" style="background-color: white;">
-    <h1>{{post.title}}</h1>
-    <small>By -- {{post.author}} {{post.subreddit}} {{post.date_created}}</small>
+    <br><br><br>
+    <div class="container" style="background-color: black ; padding: 0, 20px;"><div class="container" style="background-color: white;">
+    <h1>
+        {{post.title}}
+    </h1>
+    <small>
+        By -- 
+        <strong>
+            {{post.author}}
+        </strong>
+         in 
+        <strong>
+            {{post.subreddit}}
+        </strong>
+         on 
+        <strong>
+            {{post.date_created}}
+        </strong>
+    </small>
     <br>
     <hr>
     {{post.body}}
-    <br><br><br><br>
-    <h2>Comments:</h2>
+    <br>
+    {% if post.img %}
+        <img src="{{post.img.url}}" style="width: 50%; height:80vh ;">
+    {% endif %}
+    <br><br><br>
+
+
+
+    <div>
+        {{total}} upvotes
+    </div>
+    <div class="upvotes" style="display:flex; justify-content:flex-start;">
+    <form action="{% url 'like_post' post.id %}" method="POST">
+        {% csrf_token %}
+        <button type="submit", name="post_id", value = '{{post.id}}', class="btn btn-primary btn-sm">
+            UpVote
+        </button>        
+    </form>
+    :
+    <form action="{% url 'unlike_post' post.id %}" method="POST">
+        {% csrf_token %}
+        <button type="submit", name="post_id", value = '{{post.id}}', class="btn btn-primary btn-sm">
+            DownVote
+        </button>        
+    </form>
+    </div>
+    <br><br>
+    <hr>
+
+
+
+
+    <h3>Comments:</h3>
+    <form action="" method="POST">
+    {% csrf_token %}
+    {{form.as_p}}
+    <button type="submit" value="Add comment">Add Comment</button>
+    </form>
+
+
+
+
     {% if not post.comments.all %}
+    <div style="border-style:groove; border-color: lightgray;">
         No Comments Yet
+    </div>
+    <br><br><br><br>
     {% else %}
+    <hr>
         {% for comment in post.comments.all %}
-            {{comment.user}} - {{comment.date_created}}
+           by: <strong>
+            {{comment.user}}
+        </strong> - 
+        <small>
+            {{comment.date_created}}
+        </small>: 
+            <br>
         <br>
-        <div>
+        <div style="border-style:hidden; border-color: lightgray;">
+           <small>
             {{comment.body}}
+        </small>
         </div>
+        <hr>
+        <br><br> <br>
         {% endfor %}
     {% endif %}
 
-    {% include 'reddit/addcomment.html' %}
-    </div></div>
 {% endblock %}

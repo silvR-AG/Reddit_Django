@@ -11,10 +11,14 @@ class AddPost(forms.ModelForm):
         fields = [
             'title',
             'body',
-            'author',
+            'img',
             'subreddit',
         ]
+    widgets = {
+        'title' : forms.Textarea(attrs={'rows': 1,'class':'form-control'}),
+        'body' : forms.Textarea(attrs={'cols':80 ,'class':'form-control'}),
 
+    }
 
 class AddSubreddit(forms.ModelForm):
     class Meta:
@@ -23,12 +27,22 @@ class AddSubreddit(forms.ModelForm):
             'name',
             'description',
         ]
+        widgets = {
+            'name': forms.Textarea(attrs={'rows': 1,'class':'form-control'}),
+            'description': forms.Textarea(attrs={'cols':80 ,'class':'form-control'}),
+        }
 
 
 class AddComment(forms.ModelForm):
     class Meta:
         model = Comment
         fields = [
+            # 'post',
+            # 'user',
             'body',
         ]
-        widgets = {'body': forms.Textarea(attrs={'rows':4, 'cols':80})}
+        widgets = {
+            'body': forms.Textarea(attrs={'class':'form-control'}),
+            # 'user': forms.Textarea(attrs={'rows':1, 'cols':80, 'class':'form-control'})
+            }
+

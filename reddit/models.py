@@ -32,11 +32,22 @@ class Posts(models.Model):
     author = models.ForeignKey(R_User, on_delete=models.CASCADE)
     upvotes = models.IntegerField(default=0)
     downvotes = models.IntegerField(default=0)
+    img = models.ImageField(null = True, blank = True, upload_to = 'images/')
     score = models.IntegerField(default=0)
     subreddit = models.ForeignKey(Subreddit, on_delete=models.CASCADE)
+    likes = models.ManyToManyField(R_User, related_name = 'blog_post')
+    unlikes = models.ManyToManyField(R_User, related_name = 'blog_unlike')
+
+
+    def total_likes(self):
+        return self.likes.count()
+
+    def total_unlikes(self):
+        return self.unlikes.count()
 
     def __str__(self):
         return self.title
+    
 
 
 class Comment(models.Model):
@@ -46,10 +57,11 @@ class Comment(models.Model):
     # upvotes = models.IntegerField(default=0)
     # downvotes = models.IntegerField(default=0)
     # score = models.IntegerField(default=0)
-    date_created = models.DateField(default=timezone.now)
+    date_created = models.DateTimeField(default=timezone.now)
     parent = models.ForeignKey('self', on_delete=models.CASCADE, null=True, blank=True)
 
 
     def __str__(self):
-        return self.body
+        return '%s-%s' % (self.post.id,self.user.id)
+    
 

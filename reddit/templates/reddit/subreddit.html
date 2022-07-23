@@ -1,31 +1,37 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    <div class="header" style="background-color: white; height:5vh;padding:5px 5px 0px 5px;text-align:center;display:flex; justify-content:space-between;">
-        <a href = '/home'><div>Reddit</div></a>
-    <div class="login-signup">
-    {% for message in messages %}
-    <div class="alert alert-{{message.tags}} alert-dismissible fade show" role="alert">
-        <strong>Message</strong>{{message}}
-        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-        <span aria-hidden="true">&times;</span>
-        </button>
-    </div>
-    {% endfor %}
-    {% if user.is_authenticated %}
-    <button type="submit"><a href = '/logout'>Logout</a></button>
+{% extends 'reddit/base.html' %}
+{% load static %}
 
-    {% else %}
-    <button type="submit"><a href = '/register'>Register</a></button>
-    <button type="submit"><a href = '/login'>Login</a></button>
-    {% endif %}
-    </div></div>
-    <hr>
-</body>
-</html>
+{% block content %}
+<br><br><br>
+<div class="container" style="background-color: black ; padding: 0, 20px;">
+    <div class="container" style="background-color: white;">
+        <h1>
+            {{sub.name}}
+        </h1>
+        <br>
+        <hr>
+        {{sub.description}}
+        <hr>
+        <table class="posts_table table" style="background-color:white; width: 100%; text-align: left;">
+            <tbody class="table-hover">
+                {% for post in data %}
+                {% if post.subreddit_id == sub.id %}
+                <tr><span class="border">
+                        <td>
+                            {{forloop.counter}}
+                        </td>
+                    </span>
+                    <td style="height: 15vh ;">
+                        <a href="{% url 'PostDetail' post.id %}" style="text-decoration: none ; color: black;">
+                            <div class="post"><strong>{{ post.title }}</strong><br><br> <br> submitted
+                                {{post.date_created}} by : {{post.author}} to {{post.subreddit}}</div>
+                        </a>
+                    </td>
+                </tr>
+            </tbody>
+            {% endif %}
+            {% endfor %}
+
+            <br><br> <br><br><br><br>
+
+            {% endblock %}

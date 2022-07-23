@@ -1,5 +1,7 @@
 from django.urls import path
 from . import views
+from django.conf import settings
+from django.conf.urls.static import static
 
 
 
@@ -11,8 +13,9 @@ urlpatterns = [
     path('logout', views.Logout, name = 'Sign-out'),
     path('addpost',views.addpost, name = 'addsubreddit'),
     path('addsub',views.addsubreddit, name = 'addsubreddit'),
-    path('addcomment', views.addcomment, name = 'addcomment'),
+    path('post/<int:id>/comment', views.addcomment, name = 'addcomment'),
     path('post/<int:id>',views.postdetail , name = 'PostDetail'),
-    path('subreddit', views.subred, name = 'Subreddit'),
-    
+    path('subreddit/<int:id>', views.subred, name = 'Subreddit'),
+    path('like/<int:id>', views.like_post, name = 'like_post'),
+    path('unlike/<int:id>', views.unlike_post, name = 'unlike_post'),      
 ]
